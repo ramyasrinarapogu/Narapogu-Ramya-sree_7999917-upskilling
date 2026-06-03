@@ -1,137 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Event Registration Form</title>
+  <title>Typography Design</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            padding-top: 40px;
-        }
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            width: 400px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
-
-        h2 {
-            text-align: center;
-            color: darkblue;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            background-color: darkblue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: navy;
-        }
-
-        output {
-            display: block;
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #e6ffe6;
-            border: 1px solid green;
-            border-radius: 5px;
-            color: green;
-            text-align: center;
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="form-container">
+<div class="container">
 
-    <h2>Event Registration</h2>
+  <h1 class="title">Welcome to Our Product</h1>
 
-    <form onsubmit="showMessage(event)">
+  <h2 class="subtitle">Enhancing User Experience</h2>
 
-        <!-- Name -->
-        <label>Name</label>
-        <input type="text"
-               placeholder="Enter your name"
-               required
-               autofocus
-               id="name">
+  <p class="description">
+    Our platform is designed to provide the best experience with clean design,
+    smooth performance, and excellent usability. We focus on modern design trends
+    to ensure readability and engagement.
+  </p>
 
-        <!-- Email -->
-        <label>Email</label>
-        <input type="email"
-               placeholder="Enter your email"
-               required
-               id="email">
-
-        <!-- Date -->
-        <label>Date</label>
-        <input type="date"
-               required
-               id="date">
-
-        <!-- Event Type -->
-        <label>Event Type</label>
-        <select id="eventType" required>
-            <option value="">Select Event</option>
-            <option>Tree Plantation</option>
-            <option>Clean City Drive</option>
-            <option>Food Donation</option>
-            <option>Blood Donation</option>
-            <option>Sports Meet</option>
-            <option>Cultural Festival</option>
-        </select>
-
-        <!-- Message -->
-        <label>Message</label>
-        <textarea placeholder="Write your message..." id="message"></textarea>
-
-        <button type="submit">Register</button>
-
-    </form>
-
-    <!-- Output message -->
-    <output id="result"></output>
+  <p class="highlight">
+    Experience the difference with our beautifully crafted interface.
+  </p>
 
 </div>
-
-<script>
-    function showMessage(event) {
-        event.preventDefault();
-
-        let name = document.getElementById("name").value;
-        let eventType = document.getElementById("eventType").value;
-
-        document.getElementById("result").innerHTML =
-            "Thank you " + name + "! You have registered for " + eventType + ".";
-    }
-</script>
 
 </body>
 </html>

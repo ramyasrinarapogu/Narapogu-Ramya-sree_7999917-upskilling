@@ -1,127 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Nearby Event Finder</title>
-
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            background-color: #f2f2f2;
-        }
-
-        .container {
-            width: 400px;
-            margin: auto;
-            margin-top: 60px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-        }
-
-        button {
-            padding: 12px;
-            width: 100%;
-            background-color: darkblue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: navy;
-        }
-
-        #output {
-            margin-top: 15px;
-            font-weight: bold;
-        }
-
-        .error {
-            color: red;
-        }
-
-        .success {
-            color: green;
-        }
-    </style>
+  <title>Multi Column Layout</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-    <h2>Find Nearby Events</h2>
+  <h1>Community Bulletin</h1>
 
-    <button onclick="findLocation()">Find Nearby Events</button>
+  <div class="news">
+    <p>
+      The community center hosted a grand cultural event this weekend, attracting hundreds of visitors.
+      The event featured music, dance, and art exhibitions from local talents. Families gathered to enjoy
+      the performances and participate in various activities designed for all age groups.
+    </p>
 
-    <div id="output"></div>
+    <p>
+      Organizers emphasized the importance of community bonding and cultural exchange. Food stalls offering
+      diverse cuisines added to the festive atmosphere. Volunteers worked tirelessly to ensure smooth
+      coordination and safety throughout the event.
+    </p>
+
+    <p>
+      The success of the event has encouraged plans for future gatherings. Residents expressed their joy
+      and appreciation, highlighting how such initiatives strengthen relationships and create lasting memories.
+    </p>
+
+    <p>
+      The next event is expected to include workshops, competitions, and more interactive sessions.
+      Community leaders are inviting suggestions to make upcoming programs even more engaging and inclusive.
+    </p>
+  </div>
 
 </div>
-
-<script>
-
-function findLocation() {
-
-    const output = document.getElementById("output");
-
-    // Check if geolocation is supported
-    if (!navigator.geolocation) {
-        output.innerHTML = "<span class='error'>Geolocation not supported in this browser</span>";
-        return;
-    }
-
-    output.innerHTML = "Getting location... ⏳";
-
-    // High accuracy options
-    const options = {
-        enableHighAccuracy: true,
-        timeout: 10000,      // 10 seconds
-        maximumAge: 0
-    };
-
-    navigator.geolocation.getCurrentPosition(
-        // SUCCESS
-        function(position) {
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-
-            output.innerHTML =
-                "<span class='success'>Location found ✔</span><br>" +
-                "Latitude: " + lat + "<br>" +
-                "Longitude: " + lon + "<br><br>" +
-                "You are near available community events 🎉";
-        },
-
-        // ERROR HANDLING
-        function(error) {
-
-            switch(error.code) {
-
-                case error.PERMISSION_DENIED:
-                    output.innerHTML = "<span class='error'>Permission denied ❌ Please allow location access</span>";
-                    break;
-
-                case error.POSITION_UNAVAILABLE:
-                    output.innerHTML = "<span class='error'>Location unavailable ❌</span>";
-                    break;
-
-                case error.TIMEOUT:
-                    output.innerHTML = "<span class='error'>Request timed out ⏱ Try again</span>";
-                    break;
-
-                default:
-                    output.innerHTML = "<span class='error'>Unknown error occurred</span>";
-            }
-        },
-
-        options
-    );
-}
-
-</script>
 
 </body>
 </html>

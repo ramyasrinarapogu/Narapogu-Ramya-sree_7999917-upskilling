@@ -1,0 +1,32 @@
+/* Background */
+body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Multi-column layout */
+.news {
+    column-count: 2;              /* 2 columns */
+    column-gap: 30px;             /* space between columns */
+    column-rule: 1px solid gray;  /* line between columns */
+
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: justify;
+}

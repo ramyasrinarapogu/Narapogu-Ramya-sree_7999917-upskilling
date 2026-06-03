@@ -1,47 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome Banner</title>
-
-    <!-- 🔹 Internal CSS -->
-    <style>
-        /* ID styling */
-        #welcomeBanner {
-            background-color: blue;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin: 20px;
-        }
-
-        /* Class styling */
-        .highlight {
-            background-color: yellow;
-            font-weight: bold;
-            padding: 5px;
-        }
-    </style>
+    <title>Community Portal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- 🔹 Welcome Banner -->
-    <div id="welcomeBanner">
-        <h1>Welcome Back, User! 🎉</h1>
+    <header id="mainHeader">
+        <h1>City Community Portal</h1>
+    </header>
 
-        <p>
-            We are happy to see you again. Check out our 
-            <span style="color: red; font-weight: bold;">
-                Special Offer!
-            </span>
-        </p>
+    <section>
+        <h2>Upcoming Events</h2>
 
-        <p class="highlight">
-            Register now to get early access to events!
-        </p>
-    </div>
+        <div class="eventCard">
+            <h3>Music Festival</h3>
+            <p>Date: June 10</p>
+        </div>
+
+        <div class="eventCard">
+            <h3>Food Fair</h3>
+            <p>Date: June 15</p>
+        </div>
+    </section>
 
 </body>
 </html>

@@ -1,0 +1,57 @@
+/* Background */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Event Card Styling (BOX MODEL) */
+.eventCard {
+    background: white;
+    border: 2px solid #333;      /* border */
+    padding: 20px;               /* inside space */
+    margin: 20px 0;              /* outside space */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Hover effect */
+.eventCard:hover {
+    transform: scale(1.03);
+}
+
+/* Hidden vs None */
+.hidden-box {
+    background: lightblue;
+    padding: 10px;
+    margin: 10px;
+    visibility: hidden;  /* takes space but not visible */
+}
+
+.none-box {
+    background: lightcoral;
+    padding: 10px;
+    margin: 10px;
+    display: none;       /* completely removed */
+}
+
+/* Form styling */
+.input-field {
+    padding: 10px;
+    width: 250px;
+    border: 2px solid #555;
+    border-radius: 5px;
+}
+
+/* Outline for focus */
+.input-field:focus {
+    outline: 3px solid #ff5722;   /* highlight */
+    border: none;
+}
