@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Feedback System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: navy;
+        }
+
+        #output {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+
+        #fee {
+            margin-top: 10px;
+            color: darkred;
+            font-weight: bold;
+        }
+
+        #charCount {
+            font-size: 12px;
+            color: gray;
+            text-align: right;
+        }
+
+        /* Image styles */
+        .event-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .large {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Event Feedback Form</h2>
+
+    <!-- Phone -->
+    <label>Phone Number</label>
+    <input type="text"
+           id="phone"
+           placeholder="Enter 10-digit number"
+           onblur="validatePhone()">
+
+    <div id="phoneMsg"></div>
+
+    <!-- Event Selection -->
+    <label>Select Event</label>
+    <select id="event" onchange="showFee()">
+        <option value="">-- Choose Event --</option>
+        <option value="0">Tree Plantation (₹0)</option>
+        <option value="50">Clean City Drive (₹50)</option>
+        <option value="100">Food Donation (₹100)</option>
+        <option value="150">Sports Meet (₹150)</option>
+    </select>
+
+    <div id="fee"></div>
+
+    <!-- Feedback -->
+    <label>Feedback</label>
+    <textarea id="feedback"
+              placeholder="Write your feedback..."
+              onkeyup="countChars()"></textarea>
+
+    <div id="charCount">0 characters</div>
+
+    <!-- Event Image -->
+    <img src="https://source.unsplash.com/400x200/?event,community"
+         class="event-img"
+         id="eventImg"
+         ondblclick="enlargeImage()"
+         alt="Event Image">
+
+    <!-- Submit -->
+    <button onclick="submitForm()">Submit Feedback</button>
+
+    <div id="output"></div>
+
+</div>
+
+<script>
+    // onblur validation
+    function validatePhone() {
+        let phone = document.getElementById("phone").value;
+        let msg = document.getElementById("phoneMsg");
+
+        if (phone.length === 10 && !isNaN(phone)) {
+            msg.style.color = "green";
+            msg.innerHTML = "Valid phone number ✔";
+        } else {
+            msg.style.color = "red";
+            msg.innerHTML = "Invalid phone number ✖";
+        }
+    }
+
+    // onchange event
+    function showFee() {
+        let fee = document.getElementById("event").value;
+        document.getElementById("fee").innerHTML =
+            "Event Fee: ₹" + fee;
+    }
+
+    // onclick submit
+    function submitForm() {
+        document.getElementById("output").innerHTML =
+            "Thank you! Your feedback has been submitted ✔";
+    }
+
+    // ondblclick image enlarge
+    function enlargeImage() {
+        let img = document.getElementById("eventImg");
+        img.classList.toggle("large");
+    }
+
+    // key event counter
+    function countChars() {
+        let text = document.getElementById("feedback").value;
+        document.getElementById("charCount").innerHTML =
+            text.length + " characters";
+    }
+</script>
+
+</body>
+</html>
