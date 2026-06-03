@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Feedback</title>
+</head>
+
+<body>
+
+    <h2>Event Feedback Form</h2>
+
+    Phone Number:
+    <input type="text" id="phone">
+    <br><br>
+
+    Select Event:
+    <select onchange="fee.innerHTML='Fee: '+this.value">
+        <option ="500">Music</option>
+        <option ="300">Sports</option>
+        <option ="400">Dance</option>
+    </select>
+
+    <p id="fee"></p>
+
+    <img src="https://tse3.mm.bing.net/th/id/OIP.0q-C63U8I_zxRXbegqHA8wHaEJ?pid=Api&P=0&h=180" width="200"
+    ondblclick="this.width='400'">
+    <br><br>
+
+    Feedback:
+    <textarea id="text">
+    </textarea>
+
+    <button onclick="alert('Feedback Submitted Successfully')">
+        Submit
+    </button>
+
+</body>
+</html>

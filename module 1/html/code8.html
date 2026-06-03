@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Event Preference</h2>
+
+<select id="event"
+onchange="localStorage.setItem('event',this.value)">
+
+    <option>Music</option>
+    <option>Sports</option>
+    <option>Dance</option>
+
+</select>
+
+<br><br>
+
+<button onclick="localStorage.clear();
+sessionStorage.clear()">
+
+Clear Preferences
+
+</button>
+
+<script>
+
+event.value = localStorage.getItem('event')
+
+</script>
+
+</body>
+</html>

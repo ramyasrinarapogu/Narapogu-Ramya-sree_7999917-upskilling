@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Community Event Page</title>
+
+<style>
+
+body{
+    font-family: Arial;
+}
+
+img{
+    border: 2px solid black;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 style="color:blue;">Welcome to Community Events</h1>
+
+<a href="Home">Home</a>
+<a href="About">About</a>
+<a href="Contact">Contact</a>
+
+<hr>
+
+<h2 style="color:green">Event Gallery</h2>
+
+<table border="5">
+
+<tr>
+
+<td>
+<img src="https://tse4.mm.bing.net/th/id/OIP.bLKTMhVPidK0THYc3MXxfAHaEJ?pid=Api&P=0&h=180" alt="Event 1" title="Music Event"
+width="150">
+<br>
+Music Event
+</td>
+
+<td>
+<img src="https://tse3.mm.bing.net/th/id/OIP.7A2j2QHhOo_ln2VcDzdHxQHaFS?pid=Api&P=0&h=180" alt="Event 2" title="Food Event" width="150">
+<br>
+Food Event
+</td>
+
+<td>
+<img src="https://tse1.mm.bing.net/th/id/OIP.mUzQG7EmjFomDC7L5YFpygHaE9?pid=Api&P=0&h=180" alt="Event 4" title="Dance Event" width="150">
+<br>
+Dance Event
+</td>
+
+</tr>
+
+</table>
+
+<hr>
+
+<h2 style="color:red">Register Here</h2>
+
+<form onsubmit="msg.value='Registration Successful'">
+
+Name:
+<input type="text" placeholder="Enter Name" required autofocus>
+
+<br><br>
+
+Email:
+<input type="email" placeholder="Enter Email" required>
+
+<br><br>
+
+Date:
+<input type="date">
+
+<br><br>
+
+Event:
+<select>
+<option>Music</option>
+<option>Sports</option>
+<option>Dance</option>
+</select>
+
+<br><br>
+
+Message:
+<textarea placeholder="Enter Message"></textarea>
+
+<br><br>
+
+<button type="submit">Register</button>
+
+<br><br>
+
+<output name="msg"></output>
+
+</form>
+
+<hr>
+
+<h2 style="color:pink">Feedback</h2>
+
+Phone:
+<input type="text"
+onblur="alert('Phone Checked')">
+
+<br><br>
+
+Choose Event:
+
+<select onchange="fee.innerHTML=this.value">
+
+<option>500</option>
+<option>300</option>
+<option>400</option>
+
+</select>
+
+<p id="fee"></p>
+
+<img src="event.jpg" width="200"
+ondblclick="this.width='400'">
+
+<br><br>
+
+<textarea
+onkeyup="count.innerHTML=this.value.length">
+</textarea>
+
+<p id="count">0</p>
+
+<button onclick="alert('Submitted')">
+Submit
+</button>
+
+<hr>
+
+<h2 style="color:yellow">Promo Video</h2>
+
+<video width="300" controls
+oncanplay="video.innerHTML='Video Ready'">
+
+<source src="event.mp4" type="video/mp4">
+
+</video>
+
+<p id="video"></p>
+
+<hr>
+
+<h2 style="color:violet">Save Preference</h2>
+
+<select id="event"
+onchange="localStorage.setItem('event',this.value)">
+
+<option>Music</option>
+<option>Sports</option>
+<option>Dance</option>
+
+</select>
+
+<button onclick="localStorage.clear();
+sessionStorage.clear()">
+
+Clear
+
+</button>
+
+<script>
+
+event.value=localStorage.getItem('event')
+
+</script>
+
+<hr>
+
+<h2 style="color:orange">Find Nearby Events</h2>
+
+<button onclick="getLocation()">
+Find Location
+</button>
+
+<p id="demo"></p>
+
+<script>
+
+function getLocation(){
+
+navigator.geolocation.getCurrentPosition(
+
+function(position){
+
+demo.innerHTML=
+"Latitude: "+position.coords.latitude+
+"<br>Longitude: "+position.coords.longitude
+
+},
+
+function(error){
+
+if(error.code==1)
+demo.innerHTML="Permission Denied"
+
+else if(error.code==3)
+demo.innerHTML="Timeout"
+
+else
+demo.innerHTML="Location Error"
+
+},
+
+{
+enableHighAccuracy:true,
+timeout:5000
+}
+
+)
+
+}
+
+console.log("Page Loaded")
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration Form</title>
+</head>
+
+<body>
+
+    <h2>Event Registration Form</h2>
+
+    <form onsubmit="msg.value='Registration Successful!'">
+
+        Name:
+        <input type="text" placeholder="Enter your name" required autofocus>
+        <br><br>
+
+        Email:
+        <input type="email" placeholder="Enter your email" required>
+        <br><br>
+
+        Date:
+        <input type="date" required>
+        <br><br>
+
+        Event Type:
+        <select required>
+            <option>Music</option>
+            <option>Sports</option>
+            <option>Dance</option>
+        </select>
+        <br><br>
+
+        Message:
+        <textarea placeholder="Enter message"></textarea>
+        <br><br>
+
+        <button type="submit">Register</button>
+
+        <br><br>
+
+        <output name="msg"></output>
+
+    </form>
+
+</body>
+</html>
