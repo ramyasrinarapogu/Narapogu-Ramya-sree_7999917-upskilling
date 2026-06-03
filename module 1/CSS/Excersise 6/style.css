@@ -1,0 +1,66 @@
+/* Background */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #89f7fe, #66a6ff);
+}
+
+/* Navigation Menu */
+.nav-menu {
+    list-style-type: none;   /* remove bullets */
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 15px;
+    margin: 0;
+}
+
+.nav-menu li {
+    margin: 0 15px;   /* spacing between items */
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Link States */
+a:link {
+    color: #007BFF;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: #ff5722;
+    text-decoration: underline;
+}
+
+a:active {
+    color: red;
+}
+
+/* Container */
+.container {
+    background: white;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Feature List */
+.feature-list {
+    list-style-type: square;      /* change bullet type */
+    list-style-position: inside;  /* bullets inside */
+    padding: 10px;
+}
+
+.feature-list li {
+    margin: 10px 0;   /* spacing */
+    padding: 5px;
+    font-size: 18px;
+}

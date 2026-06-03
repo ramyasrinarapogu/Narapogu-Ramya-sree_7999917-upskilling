@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Community Event Portal</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #e3f2fd, #fff3e0);
+    }
+
+    header {
+      background: #1a1a2e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #0077ff;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 12px 18px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    nav button:hover {
+      background: #005ad1;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* EVENT CARD */
+    .eventCard {
+      background: white;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 6px solid #0077ff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background: green;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: darkgreen;
+    }
+
+    /* INPUTS */
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    textarea {
+      height: 120px;
+    }
+
+    /* FEEDBACK BOX */
+    .feedbackBox {
+      background: white;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* CONTACT CARD */
+    .contactCard {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎉 Community Event Portal</h1>
+  <p>Real-Life Interactive Event Management System</p>
+</header>
+
+<nav>
+  <button onclick="show('home')">Events</button>
+  <button onclick="show('register')">Register</button>
+  <button onclick="show('feedback')">Feedback</button>
+  <button onclick="show('contact')">Contact</button>
+</nav>
+
+<div class="container">
+
+  <!-- EVENTS -->
+  <div id="home" class="section active">
+    <h2>Upcoming Events</h2>
+    <div id="eventList"></div>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="register" class="section">
+    <h2>Event Registration</h2>
+
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="eventName" placeholder="Event Name">
+
+    <button class="btn" onclick="register()">Register</button>
+
+    <p id="msg" class="success"></p>
+  </div>
+
+  <!-- FEEDBACK -->
+  <div id="feedback" class="section">
+    <h2>Feedback</h2>
+
+    <textarea id="feedbackText" placeholder="Write your feedback..."></textarea>
+    <button class="btn" onclick="addFeedback()">Submit</button>
+
+    <div id="feedbackList"></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+    <h2>Contact Us</h2>
+
+    <div class="contactCard">
+      <p>📍 Location: Vijayawada, Andhra Pradesh</p>
+      <p>📞 Phone: +91 9876543210</p>
+      <p>📧 Email: support@communityevents.com</p>
+      <p>⏰ Working Hours: 9 AM - 6 PM</p>
+    </div>
+
+    <h3 style="margin-top:15px;">Send Message</h3>
+
+    <input type="text" id="cname" placeholder="Your Name">
+    <input type="email" id="cemail" placeholder="Your Email">
+    <textarea id="cmsg" placeholder="Your Message"></textarea>
+
+    <button class="btn" onclick="sendContact()">Send</button>
+
+    <p id="contactMsg" class="success"></p>
+  </div>
+
+</div>
+
+<script>
+  // EVENTS DATA
+  const events = [
+    { name: "Music Night", date: "10 June", location: "City Hall" },
+    { name: "Food Festival", date: "12 June", location: "Central Park" },
+    { name: "Tech Meetup", date: "15 June", location: "Tech Hub" }
+  ];
+
+  function loadEvents() {
+    let box = document.getElementById("eventList");
+    box.innerHTML = "";
+
+    events.forEach(e => {
+      box.innerHTML += `
+        <div class="eventCard">
+          <h3>${e.name}</h3>
+          <p>📅 ${e.date}</p>
+          <p>📍 ${e.location}</p>
+        </div>
+      `;
+    });
+  }
+
+  loadEvents();
+
+  // NAVIGATION
+  function show(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+
+  // REGISTER
+  function register() {
+    let name = document.getElementById("name").value;
+    let event = document.getElementById("eventName").value;
+
+    if (!name || !event) {
+      alert("Fill all fields");
+      return;
+    }
+
+    document.getElementById("msg").innerText =
+      `✔ ${name} registered for ${event}`;
+
+    document.getElementById("name").value = "";
+    document.getElementById("eventName").value = "";
+  }
+
+  // FEEDBACK
+  function addFeedback() {
+    let text = document.getElementById("feedbackText").value;
+
+    if (!text) {
+      alert("Write feedback first");
+      return;
+    }
+
+    let box = document.getElementById("feedbackList");
+
+    box.innerHTML += `
+      <div class="feedbackBox">⭐ ${text}</div>
+    `;
+
+    document.getElementById("feedbackText").value = "";
+  }
+
+  // CONTACT FORM
+  function sendContact() {
+    let name = document.getElementById("cname").value;
+    let email = document.getElementById("cemail").value;
+    let msg = document.getElementById("cmsg").value;
+
+    if (!name || !email || !msg) {
+      alert("Please fill all contact fields");
+      return;
+    }
+
+    document.getElementById("contactMsg").innerText =
+      "✔ Message sent successfully! We will contact you soon.";
+
+    document.getElementById("cname").value = "";
+    document.getElementById("cemail").value = "";
+    document.getElementById("cmsg").value = "";
+  }
+</script>
+
+</body>
+</html>
